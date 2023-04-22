@@ -1,0 +1,7 @@
+#define Ch_s(x, y, z) ((x & y) ^ (~x & z))
+#define Maj_s(x, y, z) ((x & y) ^ (x & z) ^ (y & z))
+#define RotR_s(x, n) ((x >> n) | (x << ((sizeof(x) << 3) - n)))
+#define Sig0_s(x) ((RotR_s(x, 2)) ^ (RotR_s(x, 13)) ^ (RotR_s(x, 22)))
+#define Sig1_s(x) ((RotR_s(x, 6)) ^ (RotR_s(x, 11)) ^ (RotR_s(x, 25)))
+#define sig0_s(x) (RotR_s(x, 7) ^ RotR_s(x, 18) ^ (x >> 3))
+#define sig1_s(x) (RotR_s(x, 17) ^ RotR_s(x, 19) ^ (x >> 10))
