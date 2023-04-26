@@ -95,7 +95,7 @@ matrixbf *trainfilter()
 int evaluate(char *mailId, matrixbf *mbf);
 float modelAccuracy(matrixbf *mbf)
 {
-    int answerkeysize = 86;
+    int answerkeysize = 70;
     int answerkey[answerkeysize];
     FILE *answers = fopen("./archive/answers.csv", "r");
     int i = 0;
