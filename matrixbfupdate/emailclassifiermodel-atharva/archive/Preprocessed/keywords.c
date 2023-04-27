@@ -4,14 +4,50 @@
 #define MAX_LINE_LENGTH 10000
 #define MAX_WORD_LENGTH 100
 #define MAX_ARRAY_SIZE 315
+typedef struct hashNode
+{
+    char * str;
+    long long int freq;
+    struct hashNode * next;
+}hashNode;
 
-int isIncluded(char * arr[], int k, char * str){
-    for(int i=0; i<k; i++){
-        if(strcmp(arr[i],str)==0){
-            return 1;
-        }
+// new Node
+hashNode * newNode(hashNode * node, char * str){
+    node=(hashNode*)malloc(sizeof(hashNode));
+    // node->str=str;
+    node->str=(char*)malloc(sizeof(char)*(strlen(str)+1));
+    strcpy(node->str,str);
+    node->freq=1;
+    node->next=NULL;
+    return node;
+}
+// hashmap=linked list of hashnodes
+// insert at tail
+hashNode * insertAtTail(hashNode * head, char * key){
+    if(!head){
+        hashNode * nn=newNode(nn,key);
+        return nn;
     }
-    return 0;
+    hashNode * temp=head;
+    while (temp->next)
+    {
+        temp=temp->next;
+    }
+    hashNode * nn=newNode(nn,key);
+    temp->next=nn;
+    return head;
+}
+// search
+hashNode* search(hashNode * head, char * key){
+    if(head==NULL){
+        return NULL;
+    }
+    hashNode * temp=head;
+    while (temp && strcmp(temp->str,key))
+    {
+        temp=temp->next;
+    }
+    return temp;
 }
 int main()
 {
@@ -29,6 +65,7 @@ int main()
     char *words_printed[100000];
     int k=0;
     int count = 0;
+    hashNode * head=NULL;
     while (fgets(line, sizeof(line), input_file))
     {
 
@@ -45,15 +82,31 @@ int main()
                     break;
                 }
             }
-            if (!flag && strlen(token2)>=2 && !isIncluded(words_printed,k,token2))
+            if (!flag && strlen(token2)>=2)
             {
-                words_printed[k]=token2;
-                k++;
-                printf("%s\n", token2);
+                hashNode * result=search(head,token2);
+                if (!result)
+                {
+                    head=insertAtTail(head,token2);
+                }
+                else{
+                    result->freq++;
+                }
             }
             token2 = strtok(NULL, " ");
         }
     }
-
+    hashNode * temp=head;
+    // while (temp)
+    // {
+    //     printf("%s,%lld\n",temp->str,temp->freq);
+    //     temp=temp->next;
+    // }
+    while (temp)
+    {
+        printf("%s\n",temp->str);
+        temp=temp->next;
+    }
+    
     return 0;
 }
