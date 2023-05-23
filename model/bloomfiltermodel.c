@@ -10,7 +10,7 @@ matrixbf *trainfilter()
 {
     matrixbf *mbf;
     mbf = init(mbf);
-    FILE *spamEmailIDs = fopen("./archive/spamemailIDs.txt", "r");
+    FILE *spamEmailIDs = fopen("spamemailIDs.txt", "r");
     char mailID[MAX_DOMAIN_SIZE];
     int i = 1;
     while (!feof(spamEmailIDs) && !ferror(spamEmailIDs))
@@ -178,10 +178,10 @@ int evaluate(char *mailID, matrixbf*mbf)
 }
 int main()
 {
-    // printf("Loading Bloom...\n");
+    printf("Loading Bloom...\n");
     matrixbf *mbf = NULL;
     mbf = trainfilter();
-    printmbf(mbf);
+    // printmbf(mbf);
     // printf("\n-------------------------------------------------------\n");
     // printf("Your model is %f percent accurate\n", modelAccuracy(mbf));
     // printf("%d,%d,%f\n",BLOOM_ROWS,BLOOM_COLS, modelAccuracy(mbf));

@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#define BLOOM_LEN 200 // you can modulate this. Maximum size is 1800
-#define BLOOM_ROWS 2
-#define BLOOM_COLS 100
+#define BLOOM_LEN 1200 // you can modulate this. Maximum size is 1800
+#define BLOOM_ROWS 300
+#define BLOOM_COLS 4
 #define ll long long
 
 // typedef struct bloomfilter
