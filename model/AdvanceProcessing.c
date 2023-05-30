@@ -31,7 +31,7 @@ int main(int argc, char const *argv[])
     fclose(input_file);
     fclose(output_file);
 
-    printf("haa bhai hogaya kaam");
+    printf("Advanced Preprocessing of file done!!!");
 
     return 0;
 }
