@@ -11,7 +11,6 @@
 int main(int argc, char const *argv[])
 {
     // +++++++++++++++++++++++++++++EMAIL ID ANALYZER+++++++++++++++++++++++++++
-    printf("Loading Bloom...\n");
     printf("\n----------ANALYZING THE SENDER'S EMAIL ID:---------------\n");
     matrixbf *mbf = NULL;
     mbf = trainfilter();
