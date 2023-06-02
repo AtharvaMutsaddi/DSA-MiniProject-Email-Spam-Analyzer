@@ -183,7 +183,7 @@ int evaluate(char *mailID, matrixbf*mbf)
     if (strlen(domain) == 0)
     {
         ans = isSpam(username, mbf);
-        if (!strcmp(username, "gmail.com") || strstr(username, "coep") !=NULL || strstr(username, "yahoo") != NULL)
+        if (strstr(username, "facebook") !=NULL ||strstr(username, "google") !=NULL ||strstr(username, "gmail.com") !=NULL || strstr(username, "coep") !=NULL || strstr(username, "yahoo") != NULL)
         {
             ans = 0;
         }
@@ -192,7 +192,7 @@ int evaluate(char *mailID, matrixbf*mbf)
     else
     {
         ans = isSpam(domain, mbf);
-        if (!strcmp(domain, "gmail.com") || strstr(domain, "coep") != NULL || strstr(domain, "yahoo") != NULL)
+        if (strstr(username, "facebook") !=NULL || strstr(username, "google") !=NULL || strstr(domain, "gmail.com")!=NULL || strstr(domain, "coep") != NULL || strstr(domain, "yahoo") != NULL)
         {
             ans = 0;
         }
