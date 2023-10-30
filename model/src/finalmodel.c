@@ -15,7 +15,7 @@ int main(int argc, char const *argv[])
     matrixbf *mbf = NULL;    
     mbf = trainfilter();
     FILE *emails;
-    emails = fopen("testcases/testcase1.txt", "r");
+    emails = fopen(argv[1], "r");
     if(!emails){
         // perror("Couldn't find file in current repo...");
         printf("\033[1;31mCouldn't find file in current repo...\033[0m\n");
