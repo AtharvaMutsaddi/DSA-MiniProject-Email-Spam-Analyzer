@@ -17,19 +17,16 @@ int main(int argc, char const *argv[])
     FILE *emails;
     emails = fopen(argv[1], "r");
     if(!emails){
-        // perror("Couldn't find file in current repo...");
-        printf("\033[1;31mCouldn't find file in current repo...\033[0m\n");
+        perror("Couldn't find file in current repo...");
         return 1;
     }
     char mailID[MAX_DOMAIN_SIZE];
     fgets(mailID,MAX_DOMAIN_SIZE,emails);
     if(evaluate(mailID, mbf)){
-        printf("The senders domain: %s seems ",mailID);
-        printf("\033[1;31msuspicious.\033[0m\n");
+        printf("The senders domain: %s seems suspicious.\n",mailID);
     }
     else{
-        printf("The senders domain: %s seems ",mailID);
-        printf("\033[1;32mok.\033[0m\n");
+        printf("The senders domain: %s seems ok.\n",mailID);
     }
     // +++++++++++++++++++++++++++++EMAIL CONTENTS ANALYZER+++++++++++++++++++++++++++
     printf("\n----------ANALYZING THE EMAIL CONTENTS:---------------\n");
@@ -63,6 +60,7 @@ int main(int argc, char const *argv[])
         double weightage = (freq / (double)corpus_size);
         insertTrieMap(tm, word, weightage);
     }
+    printf("successfully loaded trie\n");
     char email[1000000];
     int i = 1;
     while (fgets(email, 1000000, emails))
@@ -82,18 +80,17 @@ int main(int argc, char const *argv[])
         printf("Email score: %f\n", (score / size));
         if ((score / size) < QUARTILE_1)
         {
-            printf("\033[1;32mEmail may not be spam.\033[0m\n");
+            printf("Email may not be spam...\n");
         }
         else if ((score / size) >= QUARTILE_1 && (score / size) <= QUARTILE_3)
         {
-            printf("\033[1;33mEmail has moderate chances of being spam.\033[0m\n");
+            printf("Email has moderate chances of being spam...\n");
         }
         else{
-            printf("\033[1;31mEmail is mostly spam.\033[0m\n");
+            printf("Email is mostly spam...\n");
         }
         
     }
 
     return 0;
 }
-

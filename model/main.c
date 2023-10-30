@@ -13,11 +13,13 @@ void on_button_clicked(GtkWidget *button, gpointer user_data)
 {
     GtkEntry *entry = GTK_ENTRY(user_data);
     const char *text = gtk_entry_get_text(entry);
-    int len=20+strlen(text);
+
+    int len=200+strlen(text);
     char commandlinearg[len];
     strcat(commandlinearg,"./a.out ");
     strcat(commandlinearg,text);
     strcat(commandlinearg,">> cache.txt");
+    printf("Command line arg: %s\n",commandlinearg);
     system("gcc finalmodel.c");
     system(commandlinearg);
     char txt[5000];
