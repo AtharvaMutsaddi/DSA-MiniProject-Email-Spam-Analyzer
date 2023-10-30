@@ -1,0 +1,1 @@
+/usr/bin/cc -rdynamic CMakeFiles/main.dir/src/finalmodel.c.o CMakeFiles/main.dir/src/model_to_score_an_email_file.c.o -o main 

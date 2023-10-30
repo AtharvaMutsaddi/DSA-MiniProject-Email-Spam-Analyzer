@@ -2,21 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include "model_to_score_an_email_file.h"
 #define ALPHABET_SIZE 26
 #define QUARTILE_1 0.000433
 #define QUARTILE_3 0.001133
-typedef struct TrieMap
-{
-    // array of children
-    struct TrieMap *children[ALPHABET_SIZE];
-    double weightage;
 
-} TrieMap;
-TrieMap *initTrieMap(TrieMap *TrieMapNode)
-{
-    TrieMapNode = (TrieMap *)malloc(sizeof(TrieMap));
-    TrieMapNode->weightage = 0.0;
-}
 void insertTrieMap(TrieMap *TrieMapNode, const char *word, double weightage)
 {
     int len = strlen(word);
@@ -53,6 +43,8 @@ double searchTrieMap(TrieMap *TrieMapNode, const char *word)
     }
     return currNode->weightage;
 }
-double searchTrieMap(TrieMap *TrieMapNode, const char *word);
-TrieMap *initTrieMap(TrieMap *TrieMapNode);
-void insertTrieMap(TrieMap *TrieMapNode, const char *word, double weightage);
+TrieMap *initTrieMap(TrieMap *TrieMapNode)
+{
+    TrieMapNode = (TrieMap *)malloc(sizeof(TrieMap));
+    TrieMapNode->weightage = 0.0;
+}
